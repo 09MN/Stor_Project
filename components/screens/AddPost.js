@@ -22,6 +22,8 @@ const AddPost = () => {
   const [transferred, setTransferred] = useState(0);
   const [post, setPost] = useState(null);
 
+  //buat gunain kamera sama galery local
+
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       width: 1200,
@@ -50,6 +52,8 @@ const AddPost = () => {
     const imageUrl = await uploadImage();
     console.log("Image url", imageUrl);
 
+    //fungsi buat koneksi ke datbase
+
     firestore()
       .collection("posts")
       .add({
@@ -69,9 +73,11 @@ const AddPost = () => {
         setPost(null);
       })
       .catch((error) => {
-        console.log("ada salah coeg asw pisan dah", error);
+        console.log("error", error);
       });
   };
+
+  //fungsi upload ke datbase
 
   const uploadImage = async () => {
     if (image == null) {
@@ -120,7 +126,7 @@ const AddPost = () => {
       <InputWrapper>
         {image != null ? <AddImage source={{ uri: image }} /> : null}
         <InputField
-          placeholder="WhatSupp bitch"
+          placeholder="Post Ide Kamu Disini"
           multiline
           numberOfLines={4}
           value={post}

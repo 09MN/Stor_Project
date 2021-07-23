@@ -1,5 +1,7 @@
 import React, { createContext, useState } from "react";
+//autentikasi
 import auth from "@react-native-firebase/auth";
+//database
 import firestore from "@react-native-firebase/firestore";
 
 export const AuthContext = createContext();
@@ -7,6 +9,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   return (
+    //Firebase Authentication
     <AuthContext.Provider
       value={{
         user,
@@ -23,8 +26,8 @@ export const AuthProvider = ({ children }) => {
             await auth()
               .createUserWithEmailAndPassword(email, password)
               .then(() => {
-                //Once the user creation has happened successfully, we can add the currentUser into firestore
-                //with the appropriate details.
+                //kalo user udah buat akun, bakal di store ke database
+                //detailnya sedemekian rupa
                 firestore()
                   .collection("users")
                   .doc(auth().currentUser.uid)
@@ -35,7 +38,7 @@ export const AuthProvider = ({ children }) => {
                     createdAt: firestore.Timestamp.fromDate(new Date()),
                     userImg: null,
                   })
-                  //ensure we catch any errors at this stage to advise us if something does go wrong
+                  //buat nangkep error
                   .catch((error) => {
                     console.log(
                       "Something went wrong with added user to firestore: ",
@@ -43,12 +46,15 @@ export const AuthProvider = ({ children }) => {
                     );
                   });
               })
-              //we need to catch the whole sign up process if it fails too.
+              //kalo ada salah di signup
               .catch((error) => {
-                console.log("Something went wrong with sign up: ", error);
+                alert("Something went wrong with sign up: ", error);
               });
           } catch (e) {
             console.log(e);
+          }
+          {
+            /* fungsi logout */
           }
         },
         logout: async () => {

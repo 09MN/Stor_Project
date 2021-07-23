@@ -21,7 +21,7 @@ const Routes = () => {
   }, []);
 
   if (initializing) return null;
-
+  //kalo dia user baru dia bakal lanjut ke onboard kalo ga langusng ke homescreen
   return (
     <NavigationContainer>
       {user ? <AppStack /> : <AuthStack />}

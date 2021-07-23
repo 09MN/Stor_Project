@@ -29,6 +29,7 @@ function SignUp() {
             style={styles.input}
             autoCapitalize="none"
             labelValue={nama}
+            //buat store ke database
             onChangeText={(userNama) => setNama(userNama)}
             autoCapitalize="none"
           ></TextInput>
@@ -40,6 +41,7 @@ function SignUp() {
             style={styles.input}
             autoCapitalize="none"
             labelValue={email}
+            //buat store ke database
             onChangeText={(userEmail) => setEmail(userEmail)}
             keyboardType="email-address"
             autoCapitalize="none"
@@ -52,12 +54,14 @@ function SignUp() {
             style={styles.input}
             autoCapitalize="none"
             labelValue={password}
+            //buat store ke database
             onChangeText={(userPassword) => setPassword(userPassword)}
             secureTextEntry={true}
           ></TextInput>
         </View>
       </View>
 
+      {/* //buat store ke databae */}
       <TouchableOpacity
         style={styles.btnSignIn}
         onPress={() => register(email, password)}

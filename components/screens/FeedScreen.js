@@ -11,10 +11,12 @@ const FeedScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
 
+  //function
   const fetchPosts = async () => {
     try {
       const list = [];
 
+      //fungsi untuk store data postingan ke database
       await firestore()
         .collection("posts")
         .orderBy("postTime", "desc")
@@ -40,6 +42,7 @@ const FeedScreen = ({ navigation }) => {
           });
         });
 
+      //fungsi loading
       setPosts(list);
       if (loading) {
         setLoading(false);
@@ -49,9 +52,13 @@ const FeedScreen = ({ navigation }) => {
     }
   };
 
+  //fungsi load data dari database yang bakal nanti ditampilin
+
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  //hapus post
 
   useEffect(() => {
     fetchPosts();
@@ -77,6 +84,7 @@ const FeedScreen = ({ navigation }) => {
     );
   };
 
+  //hanya user yang punya post yang bisa hapus
   const deletePost = (postId) => {
     console.log("Current Post Id: ", postId);
 
@@ -109,7 +117,7 @@ const FeedScreen = ({ navigation }) => {
         }
       });
   };
-
+  //data di hapus dari database
   const deleteFirestoreData = (postId) => {
     firestore()
       .collection("posts")

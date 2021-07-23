@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+
+//auntentikasi database
 import { AuthContext } from "../../navigation/AuthProvider";
 
 function Login({ navigation }) {
@@ -26,6 +28,7 @@ function Login({ navigation }) {
             style={styles.input}
             autoCapitalize="none"
             labelValue={email}
+            //store inputan ke database
             onChangeText={(userEmail) => setEmail(userEmail)}
             keyboardType="email-address"
             autoCapitalize="none"
@@ -99,6 +102,8 @@ function Login({ navigation }) {
     </View>
   );
 }
+
+//styling
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,5 @@
 import "react-native-gesture-handler";
 import React, { useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import onBoard from "../components/screens/onBoard";
@@ -11,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
+  //
   const [isFirstLaunch, setIsFirstLaunch] = React.useState(null);
   let routeName;
 
@@ -24,6 +24,8 @@ const AuthStack = () => {
       }
     });
   });
+
+  //jika user baru install aplikasi ,, bakal keluar on board ,, kalo engga dia bakal langusng ke login screen
 
   if (isFirstLaunch === null) {
     return null; // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here

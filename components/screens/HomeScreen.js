@@ -8,10 +8,8 @@ import {
   SafeAreaView,
   Image,
 } from "react-native";
-import { AuthContext } from "../../navigation/AuthProvider";
 
 const HomeScreen = () => {
-  const { logout } = useContext(AuthContext);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <ScrollView
@@ -23,12 +21,16 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.gretting}>Welcome Back</Text>
+        {/* nampilin foto profile */}
         <Image
           style={styles.userImg}
           source={require("../../assets/images/Default/user.png")}
         />
+
+        {/* nampiliin username */}
         <Text style={styles.userName}>Muhammad Naufal</Text>
 
+        {/* deskripsi user */}
         <Text style={styles.aboutUser}>
           Don't wake us up, we'd rather just keep dreaming 'Cause the nightmares
           in our heads are bad enough
@@ -36,6 +38,7 @@ const HomeScreen = () => {
 
         <View style={styles.userInfoWrapper}>
           <View style={styles.userInfoItem}>
+            {/* nampilin jumlah post dari user */}
             <Text style={styles.userInfoTitle}>25</Text>
             <Text style={styles.userInfoSubTitle}>Post</Text>
           </View>

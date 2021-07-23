@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Animated,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import { createStackNavigator, HeaderTitle } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -23,7 +16,7 @@ import MessageScreen from "../components/screens/MessageScreen";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const MessageStack = ({ navigation }) => (
+const MessageStack = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="Chat"
@@ -252,5 +245,3 @@ const AppStack = () => {
 };
 
 export default AppStack;
-
-const style = StyleSheet.create({});

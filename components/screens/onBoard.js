@@ -2,12 +2,14 @@ import * as React from "react";
 import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 
+//buat nambahin berapa bayak layar di onboardnya , sama nentuuin judul text sama foto
+
 const data = [
   {
     key: 1,
-    title: "STOR",
+    title: "Selamat Datang !!!",
     text: " ",
-    image: require("../../assets/images/imgOnBoard/baru logo.png"),
+    image: require("../../assets/images/imgOnBoard/Logo.png"),
   },
   {
     key: 2,
@@ -37,6 +39,7 @@ function onBoard({ navigation }) {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.text}>{item.text}</Text>
         {item.key == 4 && (
+          //button
           <TouchableOpacity
             style={styles.btnDone}
             onPress={() => {
@@ -75,17 +78,20 @@ function onBoard({ navigation }) {
     </View>
   );
 }
+
+//styling
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#051E78",
+    backgroundColor: "#1E41C0",
   },
   image: {
-    width: 320,
-    height: 320,
+    width: 300,
+    height: 300,
     marginVertical: 32,
+    resizeMode: "contain",
   },
   title: {
     fontSize: 22,

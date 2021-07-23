@@ -1,13 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  ViewBase,
-  Text,
-  Button,
-  View,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet,
-} from "react-native";
+import { Button, View, TextInput, StyleSheet } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import firestore from "@react-native-firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -36,7 +28,6 @@ const ChatScreen = ({ navigation }) => {
       appendMessages(messagesFirestore);
     });
     return () => unsubscribe();
-    ``;
   }, []);
 
   const appendMessages = useCallback(
@@ -54,14 +45,12 @@ const ChatScreen = ({ navigation }) => {
       setUser(JSON.parse(user));
     }
   }
-
   async function handlePress() {
-    const _id = user.uid;
+    const _id = Math.random().toString(36).substring(7);
     const user = { _id, name };
     await AsyncStorage.setItem("user", JSON.stringify(user));
     setUser(user);
   }
-
   async function handleSend(messages) {
     const writes = messages.map((m) => chatsRef.add(m));
     await Promise.all(writes);
